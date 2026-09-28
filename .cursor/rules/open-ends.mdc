@@ -1,0 +1,13 @@
+---
+description: Keep the Flaux HQ Open Ends tracker accurate while working in this repo
+alwaysApply: true
+---
+
+# Open Ends tracker (Flaux HQ)
+
+This repo has an Open Ends tracker at `OPEN_ENDS.md` tracked by Flaux HQ.
+
+- When you fix something listed there, tick it (`- [x]`) in the same change (or delete the line), or mention `closes OE: <item text>` in the commit message.
+- When you notice a new bug, SEO gap, missing client input, or unbuilt feature while working, add it under the right section as `- [ ] text #priority`. Do not fix unrelated things without asking.
+- Never rename or remove the section headings (`## Bugs`, `## SEO`, `## Client inputs needed`, `## Features to build`, `## Content`, `## Performance & accessibility`, `## Launch & infra`).
+- Never put secrets, passwords, or API keys in the tracker.
