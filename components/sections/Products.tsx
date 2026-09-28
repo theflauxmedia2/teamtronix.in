@@ -15,7 +15,8 @@ export function Products({ heading = "h2" }: { heading?: "h1" | "h2" }) {
               POWER SOLUTIONS FOR <span className="highlight">EVERY NEED</span>
             </Title>
             <p style={{ color: "var(--gray-300)" }}>
-              Online and offline UPS, elevator backup, batteries, solar, and stabilizers.{" "}
+              Online and offline UPS, elevator backup, batteries, solar, and stabilizers. We also deal in{" "}
+              <Link href="/#brands">Luminous, Amaron, Microtek, and Amaze</Link>.{" "}
               <Link href="/products">See the full range.</Link>
             </p>
           </div>

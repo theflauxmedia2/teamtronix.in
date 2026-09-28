@@ -6,7 +6,7 @@ export function About() {
           <div className="about-image reveal-left">
             <div className="about-image-main">
               <img
-                src="/assets/icon.jpg"
+                src="/assets/logo.svg"
                 alt="Teamtronix Logo"
                 width={160}
                 height={160}

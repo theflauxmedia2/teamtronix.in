@@ -24,7 +24,13 @@ export default function DownloadsPage() {
     >
       <p>
         Product datasheets are sent on request so you receive the sheet that matches the rating you need. Email{" "}
-        <a href={`mailto:${site.salesEmail}`}>{site.salesEmail}</a> or use the quote form and name the product.
+        {site.emails.map((email, index) => (
+          <span key={email}>
+            {index > 0 ? " or " : null}
+            <a href={`mailto:${email}`}>{email}</a>
+          </span>
+        ))}{" "}
+        or use the quote form and name the product.
       </p>
       <ul>
         {products.map((product) => (

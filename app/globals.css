@@ -931,7 +931,23 @@
         .clients-bar-inner {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.25rem;
+        }
+
+        .clients-row {
+            display: grid;
+            grid-template-columns: 8.5rem minmax(0, 1fr);
+            align-items: center;
+            gap: 1rem;
+            min-width: 0;
+        }
+
+        .clients-cat {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--red-primary);
         }
 
         .clients-label {
@@ -948,6 +964,7 @@
             overflow-y: visible;
             position: relative;
             padding: 15px 0;
+            min-width: 0;
         }
 
         .clients-track::before,
@@ -978,13 +995,31 @@
             width: fit-content;
         }
 
+        .clients-scroll.reverse {
+            animation-direction: reverse;
+        }
+
         .clients-scroll:hover {
             animation-play-state: paused;
+        }
+
+        .client-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            color: var(--white);
+            white-space: nowrap;
         }
 
         @keyframes scrollLogos {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .clients-scroll {
+                animation: none;
+            }
         }
 
         .client-logo {
@@ -1604,6 +1639,61 @@
             font-size: 0.85rem;
             color: var(--gray-500);
             margin-bottom: 0;
+        }
+
+        .brands {
+            padding: 5.5rem 0 6rem;
+            background: var(--bg-primary);
+        }
+
+        .brands-head {
+            max-width: 40rem;
+        }
+
+        .brands-head p {
+            color: var(--gray-300);
+            margin-top: 0.75rem;
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.25rem;
+            margin-top: 2.5rem;
+        }
+
+        .brand-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.9rem;
+            min-height: 168px;
+            padding: 1.5rem 1rem;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .brand-card:hover {
+            border-color: var(--red-primary);
+            transform: translateY(-4px);
+        }
+
+        .brand-card img {
+            height: 58px;
+            width: auto;
+            max-width: 78%;
+            object-fit: contain;
+        }
+
+        .brand-card span {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #333;
         }
 
         /* Certifications */
@@ -2226,6 +2316,10 @@
                 max-width: 80px;
             }
 
+            .client-name {
+                font-size: 0.8rem;
+            }
+
             .clients-scroll {
                 gap: 2.5rem;
             }
@@ -2409,6 +2503,10 @@
                 padding: 3rem 0;
             }
 
+            .brand-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
             .cert-grid {
                 grid-template-columns: 1fr;
                 gap: 0.75rem;
@@ -2539,6 +2637,11 @@
 
             .logo-text .tagline {
                 font-size: 0.55rem;
+            }
+
+            .clients-row {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 0.35rem;
             }
 
             .client-logo img {

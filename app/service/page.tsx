@@ -30,7 +30,13 @@ export default function ServicePage() {
           Phone: <a href={`tel:${site.phones[1].tel}`}>{site.phones[1].display}</a>
         </li>
         <li>
-          Email: <a href={`mailto:${site.email}`}>{site.email}</a>
+          Email:{" "}
+          {site.emails.map((email, index) => (
+            <span key={email}>
+              {index > 0 ? " or " : null}
+              <a href={`mailto:${email}`}>{email}</a>
+            </span>
+          ))}
         </li>
       </ul>
       <p>

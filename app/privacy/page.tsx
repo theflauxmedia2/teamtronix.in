@@ -29,17 +29,24 @@ export default function PrivacyPage() {
       <p>We use those details to reply to enquiries, prepare quotations, and arrange installation or service. We do not sell the list.</p>
       <h2>How the form is delivered</h2>
       <p>
-        If a form endpoint is configured for this site, the enquiry is sent to that service. Otherwise the form opens your email app so you can send the message to {site.email} yourself.
+        If a form endpoint is configured for this site, the enquiry is sent to that service. Otherwise the form opens your email app so you can send the message to {site.emails.join(" or ")} yourself.
       </p>
       <h2>How long we keep it</h2>
       <p>Enquiry records are kept for as long as needed to quote, supply, service, or meet a legal requirement, and then deleted or archived.</p>
       <h2>Your choices</h2>
       <p>
-        To ask what we hold, or to ask us to correct or delete an enquiry, email <a href={`mailto:${site.email}`}>{site.email}</a>.
+        To ask what we hold, or to ask us to correct or delete an enquiry, email{" "}
+        {site.emails.map((email, index) => (
+          <span key={email}>
+            {index > 0 ? " or " : null}
+            <a href={`mailto:${email}`}>{email}</a>
+          </span>
+        ))}
+        .
       </p>
       <h2>Contact</h2>
       <p>
-        {site.name}, {site.address.street}, {site.address.locality} {site.address.postalCode}.
+        {site.name}, {site.address.line}. GSTIN: {site.gstin}.
       </p>
     </ContentPage>
   );

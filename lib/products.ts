@@ -335,14 +335,73 @@ export function getProduct(slug: string) {
   return products.find((product) => product.slug === slug);
 }
 
-export const clients = [
-  { src: "/assets/logos/hp.svg", alt: "HP" },
-  { src: "/assets/logos/ibm.svg", alt: "IBM" },
-  { src: "/assets/logos/google.svg", alt: "Google" },
-  { src: "/assets/logos/intel.svg", alt: "Intel" },
-  { src: "/assets/logos/oracle.svg", alt: "Oracle" },
-  { src: "/assets/logos/tata.svg", alt: "Tata" },
-  { src: "/assets/logos/nokia.svg", alt: "Nokia" },
-  { src: "/assets/logos/airtel.svg", alt: "Airtel" },
-  { src: "/assets/logos/infosys.svg", alt: "Infosys" },
+export type ClientMark = {
+  name: string;
+  src?: string;
+};
+
+export const clientGroups: { label: string; clients: ClientMark[] }[] = [
+  {
+    label: "Corporates",
+    clients: [
+      { name: "HP", src: "/assets/logos/hp.svg" },
+      { name: "IBM", src: "/assets/logos/ibm.svg" },
+      { name: "Airtel", src: "/assets/logos/airtel.svg" },
+      { name: "Mphasis" },
+      { name: "Intel", src: "/assets/logos/intel.svg" },
+      { name: "Oracle", src: "/assets/logos/oracle.svg" },
+      { name: "Google", src: "/assets/logos/google.svg" },
+      { name: "Sonata Software" },
+      { name: "Tata", src: "/assets/logos/tata.svg" },
+      { name: "Yatra.com" },
+      { name: "Nokia", src: "/assets/logos/nokia.svg" },
+      { name: "Flextronix" },
+      { name: "Dueteche Babcock" },
+      { name: "GMR Group" },
+      { name: "Ahluwalia Contracts" },
+      { name: "Mentor Graphics" },
+      { name: "Telisma" },
+      { name: "ARN Systems" },
+      { name: "Pizza Corner" },
+      { name: "Magma Design" },
+      { name: "Infosys", src: "/assets/logos/infosys.svg" },
+      { name: "Mindtree" },
+    ],
+  },
+  {
+    label: "Hospitals",
+    clients: [
+      { name: "Shiffa Hospital" },
+      { name: "Mediscope Hospital" },
+      { name: "Asian Diagnostics" },
+    ],
+  },
+  {
+    label: "Institutions",
+    clients: [
+      { name: "H.K.B.K. College of Engineering" },
+      { name: "Delhi Public School" },
+      { name: "Al-Ameen College" },
+    ],
+  },
+  {
+    label: "Individuals",
+    clients: [
+      { name: "Farooq Ahmed, Choice Enterprises" },
+      { name: "K. Rehman Khan, Rajya Sabha Deputy Chairman" },
+      { name: "Subroto Bagchi, Mindtree" },
+      { name: "Col. Krishna, Infosys" },
+      { name: "Masood Saheb, Excel Traders" },
+      { name: "Junia Alva, Intech Designs" },
+      { name: "Mohammad Yusuf, Powerpoint" },
+      { name: "Fairoz Abdulla, Fairoz Estates" },
+      { name: "Bola Tandon, Powerica" },
+      { name: "Parveez Ahmed, Maharaja Furniture" },
+      { name: "Nafeesa Fazal, Ex-Minister, Govt. of Karnataka" },
+      { name: "Ayaz Sait, Soles" },
+      { name: "Nadamani, Commissioner (KSP)" },
+      { name: "B.K. Singh, Deputy Commissioner (KSRP)" },
+      { name: "Hari, Foundery Networks" },
+    ],
+  },
 ];

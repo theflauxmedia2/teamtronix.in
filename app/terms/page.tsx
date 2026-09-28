@@ -36,7 +36,7 @@ export default function TermsPage() {
         The site is provided as a way to learn about Teamtronix and to ask for a quote. Decisions about load, installation, and electrical safety belong with the quotation and the engineer who surveys the site.
       </p>
       <h2>Law</h2>
-      <p>These terms are governed by the laws of India. Questions can be sent to {site.email}.</p>
+      <p>These terms are governed by the laws of India. Questions can be sent to {site.emails.join(" or ")}.</p>
     </ContentPage>
   );
 }

@@ -26,7 +26,13 @@ export default function CareersPage() {
       </p>
       <p>
         There is no open listing on this page. Send a resume and a short note about the work you want to do to{" "}
-        <a href={`mailto:${site.email}`}>{site.email}</a>.
+        {site.emails.map((email, index) => (
+          <span key={email}>
+            {index > 0 ? " or " : null}
+            <a href={`mailto:${email}`}>{email}</a>
+          </span>
+        ))}
+        .
       </p>
       <p>
         For product or service questions, use the <Link href="/#contact">quote form</Link> instead.

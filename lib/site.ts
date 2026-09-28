@@ -3,12 +3,13 @@ export const site = {
   shortName: "Teamtronix",
   slogan: "Total Power Solutions",
   url: "https://www.teamtronix.in",
+  previewImage: "https://teamtronix-nine.vercel.app/og.png",
   title: "Teamtronix India | Total Power Solutions | UPS, Solar & Stabilizers",
   description:
     "Teamtronix India Private Limited delivers UPS systems, inverter batteries, solar solutions, stabilizers, and power management equipment for homes, businesses, and industries in Bangalore.",
   locale: "en_IN",
-  email: "info@teamtronix.in",
-  salesEmail: "sales@teamtronix.in",
+  emails: ["akram@teamtronix.in", "afroze@teamtronix.in"],
+  gstin: "29AACCT6355L1ZS",
   phones: [
     { display: "+91 99809 43021", tel: "+919980943021" },
     { display: "+91 99800 92410", tel: "+919980092410" },
@@ -16,11 +17,13 @@ export const site = {
   whatsapp: "919980943021",
   instagram: "https://www.instagram.com/teamtronixindia/",
   address: {
-    street: "Devagowda Road, Near V-care Hospitals",
-    locality: "R.T. Nagar, Bangalore",
+    street: "#518, 19th Cross, Adi Kabeer Ashram Road",
+    locality: "R.T. Nagar, Bengaluru",
+    landmark: "Near VCare Hospital",
     region: "Karnataka",
     postalCode: "560032",
     country: "IN",
+    line: "#518, 19th Cross, Adi Kabeer Ashram Road, R.T. Nagar, Near VCare Hospital, Bengaluru - 560032",
   },
   foundingDate: "1994",
   sameAs: [

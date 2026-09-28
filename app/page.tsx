@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { About } from "@/components/sections/About";
+import { Brands } from "@/components/sections/Brands";
 import { Certifications } from "@/components/sections/Certifications";
 import { Clients } from "@/components/sections/Clients";
 import { Contact } from "@/components/sections/Contact";
@@ -17,6 +18,21 @@ export const metadata: Metadata = {
     title: site.title,
     description: site.description,
     url: "/",
+    images: [
+      {
+        url: site.previewImage,
+        width: 1200,
+        height: 630,
+        alt: "Teamtronix India — Pure Power. Sure Power.",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
+    images: [site.previewImage],
   },
 };
 
@@ -26,6 +42,7 @@ export default function HomePage() {
       <Hero />
       <Clients />
       <Products />
+      <Brands />
       <Featured />
       <Stats />
       <About />

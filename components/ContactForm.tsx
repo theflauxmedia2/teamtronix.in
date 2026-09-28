@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import { brandInquiryOptions } from "@/lib/brands";
 import { inquiryOptions } from "@/lib/products";
 import { whatsappHref } from "@/lib/site";
 
@@ -70,7 +71,7 @@ export function ContactForm() {
         <label htmlFor="product">Product Interest</label>
         <select id="product" name="product" value={preset} onChange={(event) => setPreset(event.target.value)}>
           <option value="">Select a product category</option>
-          {inquiryOptions.map((option) => (
+          {[...inquiryOptions, ...brandInquiryOptions].map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>

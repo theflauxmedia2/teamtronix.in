@@ -137,7 +137,7 @@ export default async function ProductPage({ params }: Props) {
             <div>
               <h2>Talk to Teamtronix</h2>
               <p>
-                {site.address.street}, {site.address.locality} {site.address.postalCode}
+                {site.address.line}
               </p>
             </div>
             <div className="sheet-phones">

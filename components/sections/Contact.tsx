@@ -23,9 +23,9 @@ export function Contact() {
                 <div className="info">
                   <h3>Visit Us</h3>
                   <p>
-                    Devagowda Road, Near V-care Hospitals,
+                    {site.address.line}
                     <br />
-                    R.T. Nagar, Bangalore - 560032
+                    GSTIN: {site.gstin}
                   </p>
                 </div>
               </div>
@@ -50,9 +50,12 @@ export function Contact() {
                 <div className="info">
                   <h3>Email Us</h3>
                   <p>
-                    <a href={`mailto:${site.email}`}>{site.email}</a>
-                    <br />
-                    <a href={`mailto:${site.salesEmail}`}>{site.salesEmail}</a>
+                    {site.emails.map((email, index) => (
+                      <span key={email}>
+                        {index > 0 ? <br /> : null}
+                        <a href={`mailto:${email}`}>{email}</a>
+                      </span>
+                    ))}
                   </p>
                 </div>
               </div>

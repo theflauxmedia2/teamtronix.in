@@ -11,7 +11,7 @@ export function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/#home" className="footer-logo">
-              <img src="/assets/icon.jpg" alt="Teamtronix Logo" className="footer-logo-img" width={48} height={48} />
+              <img src="/assets/logo.svg" alt="Teamtronix Logo" className="footer-logo-img" width={48} height={48} />
               <div className="footer-logo-text">
                 <span className="brand">TEAMTRONIX</span>
                 <span className="tagline">Pure Power. Sure Power.</span>
@@ -38,6 +38,7 @@ export function Footer() {
               <li><Link href="/#about">About Us</Link></li>
               <li><Link href="/#certifications">Certifications</Link></li>
               <li><Link href="/#clients">Clientele</Link></li>
+              <li><Link href="/#brands">Brands We Deal In</Link></li>
               <li><Link href="/careers">Careers</Link></li>
               <li><Link href="/#contact">Contact</Link></li>
             </ul>
@@ -53,7 +54,11 @@ export function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {year} {site.name} All rights reserved.</p>
+          <p>
+            &copy; {year} {site.name} All rights reserved.
+            <br />
+            GSTIN: {site.gstin}
+          </p>
           <div className="legal">
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms of Service</Link>

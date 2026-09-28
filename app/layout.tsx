@@ -78,20 +78,33 @@ export const metadata: Metadata = {
     siteName: "Teamtronix India",
     title: site.title,
     description: site.description,
+    images: [
+      {
+        url: site.previewImage,
+        width: 1200,
+        height: 630,
+        alt: "Teamtronix India — Pure Power. Sure Power.",
+        type: "image/png",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Teamtronix India | Total Power Solutions",
     description: site.description,
+    images: [site.previewImage],
   },
   icons: {
-    icon: [{ url: "/assets/icon.jpg", type: "image/jpeg" }],
-    apple: [{ url: "/assets/icon.jpg", type: "image/jpeg" }],
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png", sizes: "180x180" }],
   },
   category: "business",
   other: {
     "geo.region": "IN-KA",
-    "geo.placename": "Bangalore",
+    "geo.placename": "Bengaluru",
   },
 };
 

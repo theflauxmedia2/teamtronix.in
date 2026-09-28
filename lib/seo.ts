@@ -22,11 +22,21 @@ export function pageMeta({
       siteName: "Teamtronix India",
       locale: site.locale,
       type: "website",
+      images: [
+        {
+          url: site.previewImage,
+          width: 1200,
+          height: 630,
+          alt: "Teamtronix India — Pure Power. Sure Power.",
+          type: "image/png",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [site.previewImage],
     },
   };
 }

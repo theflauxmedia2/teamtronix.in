@@ -16,12 +16,12 @@ export const faqs = [
   {
     question: "Where is the Bangalore office?",
     answer:
-      "Devagowda Road, Near V-care Hospitals, R.T. Nagar, Bangalore 560032. Call +91 99809 43021 or +91 99800 92410.",
+      "#518, 19th Cross, Adi Kabeer Ashram Road, R.T. Nagar, Near VCare Hospital, Bengaluru - 560032. Call +91 99809 43021 or +91 99800 92410.",
   },
   {
     question: "How do I request a quote?",
     answer:
-      "Use the quote form on this website, email info@teamtronix.in or sales@teamtronix.in, or call the numbers above. The team aims to reply within 24 hours.",
+      "Use the quote form on this website, email akram@teamtronix.in or afroze@teamtronix.in, or call the numbers above. The team aims to reply within 24 hours.",
   },
   {
     question: "Which certifications does Teamtronix list?",
