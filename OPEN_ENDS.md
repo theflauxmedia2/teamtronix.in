@@ -41,7 +41,7 @@ Tracked by Flaux HQ. Rules:
 - [ ] Provide business hours for the R.T. Nagar office for LocalBusiness schema and the Contact section #high
 - [ ] Provide Google Business Profile link (and access if Flaux should verify) #high
 - [ ] Confirm Facebook/LinkedIn/Instagram URLs in `lib/site.ts` `sameAs` are the live profiles #medium
-- [ ] Supply corporate video file/URL to replace "Corporate video coming soon" in `components/sections/Hero.tsx` #medium #homepage
+- [ ] Supply corporate video file/URL if a Watch Video CTA is added back later #low #homepage
 - [ ] Supply product datasheet PDFs (or confirm email-only delivery) for `/downloads` #medium
 - [ ] Confirm open job roles/copy if Careers should list openings instead of resume-only #low #careers
 - [ ] Provide lat/long for the showroom/office for LocalBusiness `geo` #medium
@@ -49,7 +49,7 @@ Tracked by Flaux HQ. Rules:
 - [ ] Review privacy/terms legal text with their counsel (current copy is short website-only language) #medium #legal
 
 ## Features to build
-- [ ] Wire Hero video modal to a real embed/file instead of "Corporate video coming soon" (`components/sections/Hero.tsx`) #medium #homepage
+- [x] Wire Hero video modal to a real embed/file instead of "Corporate video coming soon" (`components/sections/Hero.tsx`) #medium #homepage
 - [ ] Add real downloadable datasheets on `/downloads` (or a request workflow that emails PDFs) #medium
 - [ ] Optional email/API form endpoint so enquiries are stored if WhatsApp is unavailable #low #forms
 - [ ] Consider dedicated About and Contact pages linked from nav/footer instead of hash-only sections #low #nav
