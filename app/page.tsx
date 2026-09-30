@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { About } from "@/components/sections/About";
+import { AreasWeServe } from "@/components/sections/AreasWeServe";
 import { Brands } from "@/components/sections/Brands";
 import { Certifications } from "@/components/sections/Certifications";
 import { Clients } from "@/components/sections/Clients";
@@ -7,31 +8,32 @@ import { Contact } from "@/components/sections/Contact";
 import { Featured } from "@/components/sections/Featured";
 import { Hero } from "@/components/sections/Hero";
 import { Products } from "@/components/sections/Products";
+import { ReviewsSection } from "@/components/ReviewsSection";
 import { Stats } from "@/components/sections/Stats";
-import { site } from "@/lib/site";
+import { homeSeo, site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: site.title },
-  description: site.description,
+  title: { absolute: homeSeo.title },
+  description: homeSeo.description,
   alternates: { canonical: "/" },
   openGraph: {
-    title: site.title,
-    description: site.description,
+    title: homeSeo.title,
+    description: homeSeo.description,
     url: "/",
     images: [
       {
         url: site.previewImage,
         width: 1200,
         height: 630,
-        alt: "Teamtronix India — Pure Power. Sure Power.",
+        alt: homeSeo.title,
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: site.title,
-    description: site.description,
+    title: homeSeo.title,
+    description: homeSeo.description,
     images: [site.previewImage],
   },
 };
@@ -46,7 +48,9 @@ export default function HomePage() {
       <Featured />
       <Stats />
       <About />
+      <AreasWeServe />
       <Certifications />
+      <ReviewsSection />
       <Contact />
     </main>
   );

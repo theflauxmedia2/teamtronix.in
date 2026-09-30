@@ -16,8 +16,8 @@ export function Brands() {
         </div>
         <div className="brand-grid">
           {brands.map((brand) => (
-            <Link key={brand.name} href={`/?product=${brand.inquiry}#contact`} className="brand-card">
-              <img src={brand.src} alt={`${brand.name} logo`} />
+            <Link key={brand.name} href={`/brands/${brand.slug}/`} className="brand-card">
+              <img src={brand.src} alt={`${brand.name} logo`} loading="lazy" decoding="async" width={160} height={80} />
               <span>{brand.name}</span>
             </Link>
           ))}

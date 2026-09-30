@@ -1,76 +1,105 @@
 import { products } from "@/lib/products";
-import { site } from "@/lib/site";
+import {
+  SITE,
+  addressLine,
+  allServiceAreas,
+  streetAddressWithLandmark,
+} from "@/lib/site";
+
+const BUSINESS_ID = `${SITE.url}/#business`;
 
 export function organizationSchema() {
+  const geo =
+    SITE.geo.lat !== 0 && SITE.geo.lng !== 0
+      ? {
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: SITE.geo.lat,
+            longitude: SITE.geo.lng,
+          },
+        }
+      : {};
+
+  const hasMap = SITE.googleMapsUrl ? { hasMap: SITE.googleMapsUrl } : {};
+
   return {
     "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness"],
-    name: site.name,
-    taxID: site.gstin,
-    alternateName: "Team Tech",
-    url: site.url,
-    logo: `${site.url}/assets/logo.png`,
-    image: site.previewImage,
-    description: site.description,
-    foundingDate: site.foundingDate,
-    slogan: site.slogan,
-    email: site.emails[0],
-    telephone: site.phones[0].tel,
+    "@type": ["Organization", "ElectronicsStore"],
+    "@id": BUSINESS_ID,
+    name: SITE.legalName,
+    taxID: SITE.gstin,
+    alternateName: SITE.brandName,
+    url: SITE.url,
+    logo: `${SITE.url}/assets/logo.png`,
+    image: SITE.previewImage,
+    description:
+      "UPS, inverter, lift UPS, stabilizer and solar dealer in R.T. Nagar, Bengaluru since 1994. Sales, installation and service across North Bengaluru.",
+    foundingDate: SITE.foundingDate,
+    slogan: SITE.slogan,
+    email: SITE.emails[0],
+    telephone: SITE.phoneE164.primary,
     address: {
       "@type": "PostalAddress",
-      streetAddress: `${site.address.street}, ${site.address.landmark}`,
-      addressLocality: site.address.locality,
-      addressRegion: site.address.region,
-      postalCode: site.address.postalCode,
-      addressCountry: site.address.country,
+      streetAddress: streetAddressWithLandmark(),
+      addressLocality: SITE.address.locality,
+      addressRegion: SITE.address.region,
+      postalCode: SITE.address.postalCode,
+      addressCountry: SITE.address.country,
     },
-    areaServed: "IN",
+    ...geo,
+    ...hasMap,
+    openingHoursSpecification: SITE.openingHours.flatMap((block) =>
+      block.days.map((day) => ({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: day,
+        opens: block.opens,
+        closes: block.closes,
+      })),
+    ),
+    areaServed: allServiceAreas().map((name) => ({
+      "@type": "Place",
+      name: name === "Bengaluru" ? name : `${name}, Bengaluru`,
+    })),
+    brand: ["Teamtronix", "Team Tech", "Luminous", "Amaron", "Microtek", "Amaze"].map(
+      (name) => ({ "@type": "Brand", name }),
+    ),
     contactPoint: [
-      ...site.phones.map((phone) => ({
+      {
         "@type": "ContactPoint",
-        telephone: phone.tel,
+        telephone: SITE.phoneE164.primary,
         contactType: "sales",
         areaServed: "IN",
-        availableLanguage: ["English", "Tamil", "Hindi"],
-      })),
-      ...site.emails.map((email) => ({
+        availableLanguage: ["English", "Hindi", "Kannada", "Tamil"],
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: SITE.phoneE164.secondary,
+        contactType: "sales",
+        areaServed: "IN",
+        availableLanguage: ["English", "Hindi", "Kannada", "Tamil"],
+      },
+      ...SITE.emails.map((email) => ({
         "@type": "ContactPoint",
         email,
         contactType: "sales",
         areaServed: "IN",
-        availableLanguage: ["English", "Tamil", "Hindi"],
+        availableLanguage: ["English", "Hindi", "Kannada", "Tamil"],
       })),
     ],
-    sameAs: site.sameAs,
+    sameAs: [SITE.social.instagram, SITE.social.facebook, SITE.social.linkedin],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Power Solutions",
       itemListElement: products.map((product) => ({
         "@type": "Offer",
-        url: `${site.url}/products/${product.slug}/`,
-        priceCurrency: "INR",
-        availability: "https://schema.org/InStock",
-        itemCondition: "https://schema.org/NewCondition",
-        seller: {
-          "@type": "Organization",
-          name: site.name,
-          url: site.url,
-        },
+        url: `${SITE.url}/products/${product.slug}/`,
         itemOffered: {
           "@type": "Product",
           name: product.name,
           description: product.summary,
-          url: `${site.url}/products/${product.slug}/`,
-          image: `${site.url}${product.image}`,
+          url: `${SITE.url}/products/${product.slug}/`,
+          image: `${SITE.url}${product.image}`,
           brand: { "@type": "Brand", name: "Teamtronix" },
-          // Nested Product still needs one of offers/review/aggregateRating for rich-result eligibility
-          offers: {
-            "@type": "Offer",
-            url: `${site.url}/products/${product.slug}/`,
-            priceCurrency: "INR",
-            availability: "https://schema.org/InStock",
-            itemCondition: "https://schema.org/NewCondition",
-          },
         },
       })),
     },
@@ -85,7 +114,7 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${site.url}${item.path}`,
+      item: `${SITE.url}${item.path.endsWith("/") || item.path === "/" ? item.path : `${item.path}/`}`,
     })),
   };
 }
@@ -95,32 +124,38 @@ export function productSchema(product: {
   summary: string;
   image: string;
   slug: string;
+  priceFrom?: number | null;
 }) {
-  const url = `${site.url}/products/${product.slug}/`;
-  return {
+  const url = `${SITE.url}/products/${product.slug}/`;
+  const base = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
     description: product.summary,
-    image: `${site.url}${product.image}`,
+    image: `${SITE.url}${product.image}`,
     brand: { "@type": "Brand", name: "Teamtronix" },
-    manufacturer: { "@type": "Organization", name: site.name },
+    manufacturer: { "@id": BUSINESS_ID },
     url,
     category: "Power electronics",
-    // Required for Product rich results when public list prices are not shown (quote-based sales)
-    offers: {
-      "@type": "Offer",
-      url,
-      priceCurrency: "INR",
-      availability: "https://schema.org/InStock",
-      itemCondition: "https://schema.org/NewCondition",
-      seller: {
-        "@type": "Organization",
-        name: site.name,
-        url: site.url,
-      },
-    },
   };
+
+  if (product.priceFrom != null && product.priceFrom > 0) {
+    return {
+      ...base,
+      offers: {
+        "@type": "Offer",
+        url,
+        priceCurrency: "INR",
+        price: product.priceFrom,
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+        seller: { "@id": BUSINESS_ID },
+      },
+    };
+  }
+
+  // No public list price — omit offers so Rich Results Test does not flag missing price
+  return base;
 }
 
 export function faqSchema(faqs: { question: string; answer: string }[]) {
@@ -134,3 +169,58 @@ export function faqSchema(faqs: { question: string; answer: string }[]) {
     })),
   };
 }
+
+export function serviceSchema({
+  name,
+  description,
+  areaName,
+  url,
+}: {
+  name: string;
+  description: string;
+  areaName: string;
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name,
+    description,
+    serviceType: name,
+    provider: { "@id": BUSINESS_ID },
+    areaServed: { "@type": "Place", name: areaName },
+    url: `${SITE.url}${url}`,
+  };
+}
+
+export function articleSchema({
+  title,
+  description,
+  path,
+  datePublished,
+  dateModified,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  datePublished: string;
+  dateModified?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    datePublished,
+    dateModified: dateModified ?? datePublished,
+    author: { "@id": BUSINESS_ID },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.legalName,
+      logo: { "@type": "ImageObject", url: `${SITE.url}/assets/logo.png` },
+    },
+    mainEntityOfPage: `${SITE.url}${path}`,
+  };
+}
+
+export { addressLine, BUSINESS_ID };

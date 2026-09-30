@@ -43,6 +43,11 @@ function ClientRow({
   return (
     <div className="clients-row">
       <span className="clients-cat">{label}</span>
+      <ul className="clients-sr-list visually-hidden">
+        {clients.map((client) => (
+          <li key={`${label}-sr-${client.name}`}>{client.name}</li>
+        ))}
+      </ul>
       <div className="clients-track">
         <div
           ref={scrollRef}
@@ -53,15 +58,29 @@ function ClientRow({
               : { animationPlayState: "paused" }
           }
         >
-          {loop.map((client, index) => (
-            <span className="client-logo" key={`${label}-${client.name}-${index}`} aria-hidden={index >= midpoint}>
-              {client.src ? (
-                <img src={client.src} alt={index < midpoint ? client.name : ""} />
-              ) : (
-                <span className="client-name">{client.name}</span>
-              )}
-            </span>
-          ))}
+          {loop.map((client, index) => {
+            const duplicate = index >= midpoint;
+            return (
+              <span
+                className="client-logo"
+                key={`${label}-${client.name}-${index}`}
+                aria-hidden={duplicate || undefined}
+              >
+                {client.src ? (
+                  <img
+                    src={client.src}
+                    alt={duplicate ? "" : `${client.name} – Teamtronix client`}
+                    loading="lazy"
+                    decoding="async"
+                    width={120}
+                    height={40}
+                  />
+                ) : (
+                  <span className="client-name">{client.name}</span>
+                )}
+              </span>
+            );
+          })}
         </div>
       </div>
     </div>

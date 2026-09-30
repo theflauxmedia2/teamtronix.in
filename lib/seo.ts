@@ -5,14 +5,24 @@ export function pageMeta({
   title,
   description,
   path,
+  image,
+  ogType = "website",
 }: {
   title: string;
   description: string;
   path: string;
+  image?: string;
+  ogType?: "website" | "article" | "product";
 }): Metadata {
   const url = path.endsWith("/") ? path : `${path}/`;
+  const ogImage = image
+    ? image.startsWith("http")
+      ? image
+      : `${site.url}${image}`
+    : site.previewImage;
+
   return {
-    title,
+    title: { absolute: title },
     description,
     alternates: { canonical: url },
     openGraph: {
@@ -21,14 +31,13 @@ export function pageMeta({
       url,
       siteName: "Teamtronix India",
       locale: site.locale,
-      type: "website",
+      type: ogType === "product" ? "website" : ogType,
       images: [
         {
-          url: site.previewImage,
+          url: ogImage,
           width: 1200,
           height: 630,
-          alt: "Teamtronix India — Pure Power. Sure Power.",
-          type: "image/png",
+          alt: title,
         },
       ],
     },
@@ -36,7 +45,7 @@ export function pageMeta({
       card: "summary_large_image",
       title,
       description,
-      images: [site.previewImage],
+      images: [ogImage],
     },
   };
 }

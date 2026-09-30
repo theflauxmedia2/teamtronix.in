@@ -4,7 +4,7 @@ import { ArrowIcon, CheckIcon } from "@/components/Icons";
 const features = [
   "Galvanic Isolation for complete electrical safety",
   "Power Factor Correction (PFC) for efficiency",
-  "Remote monitoring & Battery Misery Topology",
+  "Remote monitoring & Battery management topology",
   "Xtra Cooling Device for extended lifespan",
   "Zero transfer time — instant power backup",
 ];
@@ -19,6 +19,10 @@ export function Featured() {
               <img
                 src="/assets/products/product-range.png"
                 alt="Teamtronix Complete Product Range"
+                width={800}
+                height={600}
+                loading="lazy"
+                decoding="async"
                 style={{ width: "100%", height: "auto", objectFit: "contain" }}
               />
             </div>
@@ -40,7 +44,7 @@ export function Featured() {
                 </li>
               ))}
             </ul>
-            <Link className="btn-primary" href="/#contact">
+            <Link className="btn-primary" href="/contact/#quote">
               Request Quotation
               <ArrowIcon />
             </Link>

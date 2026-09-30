@@ -1,4 +1,9 @@
+import Link from "next/link";
+import { moneyBackText, yearsInBusiness } from "@/lib/site";
+
 export function About() {
+  const years = yearsInBusiness();
+
   return (
     <section className="about" id="about">
       <div className="container">
@@ -11,6 +16,8 @@ export function About() {
                 width={200}
                 height={188}
                 className="about-logo"
+                loading="lazy"
+                decoding="async"
                 style={{ width: 200, height: "auto" }}
               />
               <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
@@ -29,11 +36,11 @@ export function About() {
             </h2>
             <p className="lead">First • Innovation • Power</p>
             <p>
-              Teamtronix India Private Limited is a trusted provider of innovative power backup and energy solutions, delivering reliability, efficiency, and performance for homes, businesses, and industries. With a commitment to quality and customer satisfaction, we offer UPS systems, inverter batteries, solar solutions, stabilizers, and power management equipment.
+              For {years}+ years Teamtronix India Private Limited has supplied UPS, inverters, batteries, lift UPS,
+              stabilizers and solar systems from R.T. Nagar, Bengaluru. We started in 1994 as Kamati Electro Networks
+              and still serve homes, apartments, hospitals, schools and corporates across North Bengaluru.
             </p>
-            <p>
-              Driven by our core values of First, Innovation, and Power, we provide dependable technology that keeps our customers connected and powered at all times.
-            </p>
+            <p>{moneyBackText()}</p>
             <div className="values-grid">
               <div className="value-item">
                 <h3>First</h3>
@@ -48,6 +55,9 @@ export function About() {
                 <p>Backup and energy solutions that stay on</p>
               </div>
             </div>
+            <Link className="btn-primary" href="/about/" style={{ marginTop: "1.5rem", display: "inline-flex" }}>
+              Read our story
+            </Link>
           </div>
         </div>
       </div>

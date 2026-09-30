@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { ArrowIcon } from "@/components/Icons";
 import { Counter } from "@/components/Counter";
-import { whatsappHref } from "@/lib/site";
+import { SITE, yearsInBusiness, whatsappHref } from "@/lib/site";
 
 const getInTouchHref = whatsappHref(
   "Hello Teamtronix,\n\nI would like to get in touch about your power solutions.",
 );
+
+const years = yearsInBusiness();
 
 export function Hero() {
   return (
@@ -37,20 +39,24 @@ export function Hero() {
               <div className="pulse" />
               <span>Total Power Solutions</span>
             </div>
-            <h1 className="hero-title">
+            <p className="hero-title" aria-hidden="true">
               <span className="line">POWERING</span>
               <span className="line">INDIA&apos;S</span>
               <span className="line">
                 <span className="power-text">FUTURE</span>
               </span>
+            </p>
+            <h1 className="hero-seo-title">
+              UPS, Inverter &amp; Lift UPS Dealer in R.T. Nagar, Bengaluru
             </h1>
             <p className="hero-subtitle">
-              Empowering homes and businesses with reliable energy solutions for a brighter tomorrow. UPS systems, inverter batteries, solar solutions, and stabilizers.
+              Empowering homes and businesses with reliable energy solutions for a brighter tomorrow. UPS systems,
+              inverter batteries, solar solutions, and stabilizers — since {SITE.foundingYear}.
             </p>
             <div className="hero-stats">
               <div className="stat">
                 <div className="stat-number">
-                  <Counter target={26} startDelay={1000} />+
+                  <Counter target={years} startDelay={1000} />+
                 </div>
                 <div className="stat-label">Years of Trust</div>
               </div>
@@ -61,14 +67,23 @@ export function Hero() {
                 <div className="stat-label">Happy Clients</div>
               </div>
               <div className="stat">
-                <div className="stat-number">
-                  <Counter target={98} startDelay={1000} />%
-                </div>
-                <div className="stat-label">Satisfaction</div>
+                {SITE.showSatisfactionStat ? (
+                  <>
+                    <div className="stat-number">
+                      <Counter target={98} startDelay={1000} />%
+                    </div>
+                    <div className="stat-label">Satisfaction</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="stat-number">Since</div>
+                    <div className="stat-label">{SITE.foundingYear}</div>
+                  </>
+                )}
               </div>
             </div>
             <div className="hero-ctas">
-              <Link className="btn-primary" href="/products">
+              <Link className="btn-primary" href="/products/">
                 Explore Products
                 <ArrowIcon />
               </Link>
@@ -92,6 +107,9 @@ export function Hero() {
                 <img
                   src="/assets/products/lifton.png"
                   alt="Lifton Elevator UPS"
+                  width={400}
+                  height={220}
+                  fetchPriority="high"
                   style={{ width: "100%", maxHeight: 220, objectFit: "contain", marginBottom: "1rem" }}
                 />
                 <div className="product-name">LIFTON UPS</div>
@@ -102,7 +120,7 @@ export function Hero() {
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
                   <polyline points="22 4 12 14.01 9 11.01" />
                 </svg>
-                ISO 9001:2008
+                {SITE.isoVersion}
               </div>
               <div className="floating-badge guarantee">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">

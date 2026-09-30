@@ -1,14 +1,16 @@
 import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, DM_Sans, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@/components/Analytics";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Nav } from "@/components/Nav";
 import { ScrollTop } from "@/components/ScrollTop";
 import { ServiceIntent } from "@/components/ServiceIntent";
 import { SiteEffects } from "@/components/SiteEffects";
+import { StickyMobileCta } from "@/components/StickyMobileCta";
 import { organizationSchema } from "@/lib/schema";
-import { site } from "@/lib/site";
+import { homeSeo, site } from "@/lib/site";
 import "./globals.css";
 
 const display = Bebas_Neue({
@@ -34,32 +36,14 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: site.title,
-    template: "%s | Teamtronix India",
+    default: homeSeo.title,
+    template: "%s | Teamtronix",
   },
-  description: site.description,
+  description: homeSeo.description,
   applicationName: "Teamtronix India",
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
   publisher: site.name,
-  keywords: [
-    "UPS systems India",
-    "Online UPS",
-    "Offline UPS",
-    "Elevator UPS",
-    "Lifton UPS",
-    "Solar UPS",
-    "Servo Stabilizers",
-    "SMF Batteries",
-    "Teamtronix",
-    "power electronics",
-    "power solutions",
-    "Cyberon AX",
-    "inverter",
-    "power backup",
-    "Bangalore UPS",
-    "R.T. Nagar UPS",
-  ],
   robots: {
     index: true,
     follow: true,
@@ -76,8 +60,8 @@ export const metadata: Metadata = {
     locale: site.locale,
     url: site.url,
     siteName: "Teamtronix India",
-    title: site.title,
-    description: site.description,
+    title: homeSeo.title,
+    description: homeSeo.description,
     images: [
       {
         url: site.previewImage,
@@ -90,8 +74,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Teamtronix India | Total Power Solutions",
-    description: site.description,
+    title: homeSeo.title,
+    description: homeSeo.description,
     images: [site.previewImage],
   },
   icons: {
@@ -127,10 +111,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           Skip to content
         </a>
         <JsonLd data={organizationSchema()} />
+        <Analytics />
         <Nav />
         <SiteEffects />
         {children}
         <Footer />
+        <StickyMobileCta />
         <ScrollTop />
         <ServiceIntent />
       </body>

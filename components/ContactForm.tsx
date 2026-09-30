@@ -28,7 +28,10 @@ export function ContactForm() {
     const email = String(data.get("email") || "").trim();
     const product = String(data.get("product") || "");
     const message = String(data.get("message") || "").trim();
-    const productLabel = inquiryOptions.find((option) => option.value === product)?.label || "a power solution";
+    const productLabel =
+      inquiryOptions.find((option) => option.value === product)?.label ||
+      brandInquiryOptions.find((option) => option.value === product)?.label ||
+      "a power solution";
 
     const lines = [
       "Hello Teamtronix,",
@@ -44,7 +47,16 @@ export function ContactForm() {
     }
 
     setOpening(true);
-    window.location.href = whatsappHref(lines.join("\n"));
+    const href = whatsappHref(lines.join("\n"));
+    const link = document.createElement("a");
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.dataset.lead = "quote";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => setOpening(false), 1500);
   }
 
   return (
