@@ -315,7 +315,7 @@
             position: relative;
             box-shadow: none;
             transition: transform 0.3s, filter 0.3s;
-            /* white mark → brand red on light backgrounds */
+            /* white mark → brand red (needed on light UI, including light scrolled nav) */
             filter: brightness(0) saturate(100%) invert(16%) sepia(98%) saturate(5500%) hue-rotate(345deg) brightness(95%);
         }
 
@@ -324,9 +324,9 @@
             box-shadow: none;
         }
 
-        [data-theme="dark"] .logo-img,
-        .nav.scrolled .logo-img {
-            filter: none; /* white mark on dark nav */
+        /* Dark theme: keep pure white mark on dark backgrounds */
+        [data-theme="dark"] .logo-img {
+            filter: none;
         }
 
         .logo-text {
