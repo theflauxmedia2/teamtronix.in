@@ -47,6 +47,15 @@ export function organizationSchema() {
       name: "Power Solutions",
       itemListElement: products.map((product) => ({
         "@type": "Offer",
+        url: `${site.url}/products/${product.slug}/`,
+        priceCurrency: "INR",
+        availability: "https://schema.org/InStock",
+        itemCondition: "https://schema.org/NewCondition",
+        seller: {
+          "@type": "Organization",
+          name: site.name,
+          url: site.url,
+        },
         itemOffered: {
           "@type": "Product",
           name: product.name,
@@ -54,6 +63,14 @@ export function organizationSchema() {
           url: `${site.url}/products/${product.slug}/`,
           image: `${site.url}${product.image}`,
           brand: { "@type": "Brand", name: "Teamtronix" },
+          // Nested Product still needs one of offers/review/aggregateRating for rich-result eligibility
+          offers: {
+            "@type": "Offer",
+            url: `${site.url}/products/${product.slug}/`,
+            priceCurrency: "INR",
+            availability: "https://schema.org/InStock",
+            itemCondition: "https://schema.org/NewCondition",
+          },
         },
       })),
     },
@@ -79,6 +96,7 @@ export function productSchema(product: {
   image: string;
   slug: string;
 }) {
+  const url = `${site.url}/products/${product.slug}/`;
   return {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -87,8 +105,21 @@ export function productSchema(product: {
     image: `${site.url}${product.image}`,
     brand: { "@type": "Brand", name: "Teamtronix" },
     manufacturer: { "@type": "Organization", name: site.name },
-    url: `${site.url}/products/${product.slug}/`,
+    url,
     category: "Power electronics",
+    // Required for Product rich results when public list prices are not shown (quote-based sales)
+    offers: {
+      "@type": "Offer",
+      url,
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: {
+        "@type": "Organization",
+        name: site.name,
+        url: site.url,
+      },
+    },
   };
 }
 
