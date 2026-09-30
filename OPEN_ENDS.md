@@ -11,7 +11,7 @@ Tracked by Flaux HQ. Rules:
 -->
 
 ## Bugs
-- [ ] `lib/site.ts` `previewImage` still points at `https://teamtronix-nine.vercel.app/og.png` instead of the live domain/`/og.png` #high #seo
+- [x] `lib/site.ts` `previewImage` still points at `https://teamtronix-nine.vercel.app/og.png` instead of the live domain/`/og.png` #high #seo
 - [ ] `lib/site.ts` `url` is `https://www.teamtronix.in` while Plesk preferred domain is apex `teamtronix.in` — canonicals/sitemap/schema can disagree with the live host #high #seo
 - [ ] `components/ContactForm.tsx` resolves WhatsApp product labels only from `inquiryOptions`, so brand picks (Luminous/Amaron/Microtek/Amaze) become "a power solution" #high #forms
 - [ ] `app/privacy/page.tsx` says the form opens email or a form endpoint; the live form opens WhatsApp via `whatsappHref` #medium #content
@@ -24,8 +24,8 @@ Tracked by Flaux HQ. Rules:
 - [ ] Several page titles are short before the layout template (e.g. Careers, Service Request, Privacy, Terms, Downloads) — tighten unique 50–60 char titles per page #medium
 - [ ] Product page titles use `product.name` only; several are long/short unevenly and lack Bangalore/UPS local modifiers #medium #products
 - [ ] JSON-LD in `lib/schema.ts` lacks `openingHoursSpecification`, `geo` lat/long, and a confirmed Google Business Profile URL in `sameAs` #high #seo
-- [ ] OG/Twitter image serves from the old Vercel preview host — browsers and crawlers should load `https://teamtronix.in/og.png` (or www) at 1200×630 #high #seo
-- [ ] No Google Search Console verification meta/DNS token present in `app/layout.tsx` or DNS docs #high #seo
+- [x] OG/Twitter image serves from the old Vercel preview host — browsers and crawlers should load `https://teamtronix.in/og.png` (or www) at 1200×630 #high #seo
+- [x] No Google Search Console verification meta/DNS token present in `app/layout.tsx` or DNS docs #high #seo
 - [ ] No GA4 / GTM / other analytics snippet in `app/layout.tsx` #high #analytics
 - [ ] Homepage product grid images in `components/sections/Products.tsx` are PNG without `width`/`height`/`loading` attributes #medium #performance
 - [ ] Hero/Featured cutouts (`Hero.tsx`, `Featured.tsx`) still use PNG product shots; prefer WebP/AVIF with dimensions like product posters #medium #performance

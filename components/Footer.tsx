@@ -11,7 +11,7 @@ export function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/#home" className="footer-logo">
-              <img src="/assets/logo.svg" alt="Teamtronix Logo" className="footer-logo-img" width={48} height={48} />
+              <img src="/assets/logo-mark.png" alt="Teamtronix Logo" className="footer-logo-img" width={48} height={48} />
               <div className="footer-logo-text">
                 <span className="brand">TEAMTRONIX</span>
                 <span className="tagline">Pure Power. Sure Power.</span>

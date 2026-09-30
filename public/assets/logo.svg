@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Teamtronix">
-  <rect width="512" height="512" fill="#FD0606"/>
-  <path fill="#FFFFFF" d="M28 188 L300 16 L392 58 C318 112 322 138 372 168 L452 186 L300 208 C230 176 150 176 72 204 L28 208 Z"/>
-  <path fill="#FFFFFF" d="M46 236 H466 L430 332 C390 268 360 258 318 258 H300 V408 H212 V258 H194 C152 258 122 268 82 332 Z"/>
-  <text x="256" y="472" text-anchor="middle" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="68">Teamtronix</text>
-</svg>

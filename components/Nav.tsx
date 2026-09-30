@@ -36,7 +36,7 @@ export function Nav() {
   return (
     <nav className={`nav${scrolled ? " scrolled" : ""}`} id="nav">
       <Link href="/#home" className="nav-logo" onClick={closeMenu}>
-        <img src="/assets/logo.svg" alt="Teamtronix Logo" className="logo-img" width={48} height={48} />
+        <img src="/assets/logo-mark.png" alt="Teamtronix Logo" className="logo-img" width={48} height={48} />
         <div className="logo-text">
           <span className="brand">TEAMTRONIX</span>
           <span className="tagline">Pure Power. Sure Power.</span>

@@ -3,7 +3,7 @@ export const site = {
   shortName: "Teamtronix",
   slogan: "Total Power Solutions",
   url: "https://www.teamtronix.in",
-  previewImage: "https://teamtronix-nine.vercel.app/og.png",
+  previewImage: "https://teamtronix.in/og.png",
   title: "Teamtronix India | Total Power Solutions | UPS, Solar & Stabilizers",
   description:
     "Teamtronix India Private Limited delivers UPS systems, inverter batteries, solar solutions, stabilizers, and power management equipment for homes, businesses, and industries in Bangalore.",

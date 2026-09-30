@@ -6,14 +6,13 @@ export function About() {
           <div className="about-image reveal-left">
             <div className="about-image-main">
               <img
-                src="/assets/logo.svg"
+                src="/assets/logo.png"
                 alt="Teamtronix Logo"
-                width={160}
-                height={160}
-                style={{ width: 160, height: 160, borderRadius: 16, boxShadow: "0 20px 50px rgba(227, 24, 55, 0.3)" }}
+                width={200}
+                height={200}
+                style={{ width: 200, height: 200, borderRadius: 16, boxShadow: "0 20px 50px rgba(227, 24, 55, 0.3)" }}
               />
               <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
-                <div style={{ fontFamily: "var(--font-display)", fontSize: "2rem" }}>TEAMTRONIX</div>
                 <div style={{ fontSize: "0.8rem", color: "var(--gray-500)", letterSpacing: "0.2em" }}>INDIA PVT. LTD.</div>
               </div>
             </div>
