@@ -309,16 +309,24 @@
         .logo-img {
             width: 48px;
             height: 48px;
-            border-radius: 8px;
-            object-fit: cover;
+            border-radius: 0;
+            object-fit: contain;
+            background: transparent;
             position: relative;
-            box-shadow: 0 4px 15px rgba(227, 24, 55, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: none;
+            transition: transform 0.3s, filter 0.3s;
+            /* white mark → brand red on light backgrounds */
+            filter: brightness(0) saturate(100%) invert(16%) sepia(98%) saturate(5500%) hue-rotate(345deg) brightness(95%);
         }
 
         .nav-logo:hover .logo-img {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(227, 24, 55, 0.5);
+            box-shadow: none;
+        }
+
+        [data-theme="dark"] .logo-img,
+        .nav.scrolled .logo-img {
+            filter: none; /* white mark on dark nav */
         }
 
         .logo-text {
@@ -1558,6 +1566,17 @@
             overflow: hidden;
         }
 
+        .about-logo {
+            position: relative;
+            z-index: 1;
+            object-fit: contain;
+            filter: brightness(0) saturate(100%) invert(16%) sepia(98%) saturate(5500%) hue-rotate(345deg) brightness(95%);
+        }
+
+        [data-theme="dark"] .about-logo {
+            filter: none;
+        }
+
         .about-image-main::before {
             content: '';
             position: absolute;
@@ -1956,8 +1975,14 @@
         .footer-logo-img {
             width: 48px;
             height: 48px;
-            border-radius: 8px;
-            object-fit: cover;
+            border-radius: 0;
+            object-fit: contain;
+            background: transparent;
+            filter: brightness(0) saturate(100%) invert(16%) sepia(98%) saturate(5500%) hue-rotate(345deg) brightness(95%);
+        }
+
+        [data-theme="dark"] .footer-logo-img {
+            filter: none;
         }
 
         .footer-logo-text {

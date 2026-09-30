@@ -2,7 +2,7 @@ export const site = {
   name: "Teamtronix India Private Limited",
   shortName: "Teamtronix",
   slogan: "Total Power Solutions",
-  url: "https://www.teamtronix.in",
+  url: "https://teamtronix.in",
   previewImage: "https://teamtronix.in/og.png",
   title: "Teamtronix India | Total Power Solutions | UPS, Solar & Stabilizers",
   description:

@@ -12,7 +12,7 @@ Tracked by Flaux HQ. Rules:
 
 ## Bugs
 - [x] `lib/site.ts` `previewImage` still points at `https://teamtronix-nine.vercel.app/og.png` instead of the live domain/`/og.png` #high #seo
-- [ ] `lib/site.ts` `url` is `https://www.teamtronix.in` while Plesk preferred domain is apex `teamtronix.in` — canonicals/sitemap/schema can disagree with the live host #high #seo
+- [x] `lib/site.ts` `url` is `https://www.teamtronix.in` while Plesk preferred domain is apex `teamtronix.in` — canonicals/sitemap/schema can disagree with the live host #high #seo
 - [ ] `components/ContactForm.tsx` resolves WhatsApp product labels only from `inquiryOptions`, so brand picks (Luminous/Amaron/Microtek/Amaze) become "a power solution" #high #forms
 - [ ] `app/privacy/page.tsx` says the form opens email or a form endpoint; the live form opens WhatsApp via `whatsappHref` #medium #content
 - [ ] Root `index.html` is a stale static duplicate of the site and can confuse deploys/reviews vs the Next `app/` source #low
@@ -27,16 +27,17 @@ Tracked by Flaux HQ. Rules:
 - [x] OG/Twitter image serves from the old Vercel preview host — browsers and crawlers should load `https://teamtronix.in/og.png` (or www) at 1200×630 #high #seo
 - [x] No Google Search Console verification meta/DNS token present in `app/layout.tsx` or DNS docs #high #seo
 - [ ] No GA4 / GTM / other analytics snippet in `app/layout.tsx` #high #analytics
+- [ ] In Google Search Console: submit sitemap `https://teamtronix.in/sitemap.xml` and Request indexing for `/`, `/products/`, and key product URLs (site not in Google index yet — `site:teamtronix.in` empty) #high #seo
 - [ ] Homepage product grid images in `components/sections/Products.tsx` are PNG without `width`/`height`/`loading` attributes #medium #performance
 - [ ] Hero/Featured cutouts (`Hero.tsx`, `Featured.tsx`) still use PNG product shots; prefer WebP/AVIF with dimensions like product posters #medium #performance
 - [ ] Brand logos include JPEG/PNG (`public/assets/brands/amaron.jpg`, `amaze.png`) — convert to SVG/WebP where possible #low #brands
 - [ ] Client logo marquee in `components/sections/Clients.tsx` sets empty `alt` on the duplicated half of logos — give meaningful alts or mark decorative consistently #medium #a11y
 - [ ] Thin support pages under ~300 words: `app/careers/page.tsx`, `app/downloads/page.tsx`, `app/service/page.tsx` — expand with R.T. Nagar / Bengaluru service keywords and internal links #medium #content
 - [ ] No dedicated `/about` or `/contact` URL (only `/#about` `/#contact` hashes) — weaker for local SEO landing pages #medium #seo
-- [ ] Confirm apex↔www 301 and HTTPS stay consistent with `metadataBase`/`site.url` after DNS changes #high #infra
+- [x] Confirm apex↔www 301 and HTTPS stay consistent with `metadataBase`/`site.url` after DNS changes #high #infra
 
 ## Client inputs needed
-- [ ] Confirm final preferred public URL (www vs non-www) and keep DNS + `lib/site.ts` aligned #high
+- [x] Confirm final preferred public URL (www vs non-www) and keep DNS + `lib/site.ts` aligned #high
 - [ ] Provide business hours for the R.T. Nagar office for LocalBusiness schema and the Contact section #high
 - [ ] Provide Google Business Profile link (and access if Flaux should verify) #high
 - [ ] Confirm Facebook/LinkedIn/Instagram URLs in `lib/site.ts` `sameAs` are the live profiles #medium
@@ -68,7 +69,8 @@ Tracked by Flaux HQ. Rules:
 - [ ] Three Google fonts loaded in `app/layout.tsx` (Bebas Neue, DM Sans, JetBrains Mono) — confirm all are needed for LCP weight #low #performance
 
 ## Launch & infra
-- [ ] Site is live on Plesk (`teamtronix.in`) via GitHub Actions FTP; remove/replace leftover Vercel preview dependencies (`previewImage`, any docs assuming Vercel hosting) #high
+- [x] Site is live on Plesk (`teamtronix.in`) via GitHub Actions FTP; remove/replace leftover Vercel preview dependencies (`previewImage`, any docs assuming Vercel hosting) #high
+- [ ] Turn off `dangerous-clean-slate: true` in `.github/workflows/deploy.yml` — it wipes `httpdocs` mid-deploy and takes the site offline for minutes #high #infra
 - [ ] Document FTP/GitHub Actions secrets rotation and who owns Plesk + DNS (`ns7/ns8.internetworldwide.in`) #medium
 - [ ] Ensure Let's Encrypt auto-renew stays enabled ("Keep websites secured") in Plesk SSL settings #medium
 - [ ] Do not use Plesk Git "Deploy now" to `\httpdocs` — it would overwrite the static `out/` deploy with source #high #infra

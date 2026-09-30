@@ -9,8 +9,9 @@ export function About() {
                 src="/assets/logo.png"
                 alt="Teamtronix Logo"
                 width={200}
-                height={200}
-                style={{ width: 200, height: 200, borderRadius: 16, boxShadow: "0 20px 50px rgba(227, 24, 55, 0.3)" }}
+                height={188}
+                className="about-logo"
+                style={{ width: 200, height: "auto" }}
               />
               <div style={{ textAlign: "center", marginTop: "1.5rem" }}>
                 <div style={{ fontSize: "0.8rem", color: "var(--gray-500)", letterSpacing: "0.2em" }}>INDIA PVT. LTD.</div>
