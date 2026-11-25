@@ -52,6 +52,7 @@ export const SITE = {
     },
   ],
   ga4Id: "", // TODO(owner): GA4 Measurement ID, e.g. G-XXXXXXX
+  metaPixelId: "1683368133571646",
   hasFrazerTownBranch: false, // TODO(owner): true only if a staffed Frazer Town shop still operates
   canProveFirstMoneyBack: false,
   showSatisfactionStat: false,
